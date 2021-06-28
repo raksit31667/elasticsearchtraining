@@ -1,0 +1,38 @@
+# Explain your query
+GET /demo_suggestion/_search
+{
+  "explain": true,
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "term": {
+            "search_data": {
+              "value": "tv"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+# Use Profiling API
+# Goto /app/dev_tools#/searchprofiler
+GET /demo_suggestion/_search
+{
+  "profiling": true,
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "term": {
+            "search_data": {
+              "value": "tv"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
