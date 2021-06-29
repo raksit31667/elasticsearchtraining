@@ -1,4 +1,4 @@
-version: '2.2'
+version: '3'
 services:
   elasticsearch:
     restart: always
@@ -52,8 +52,8 @@ services:
     build: ./fluentd
     volumes:
       - ./fluentd/conf:/fluentd/etc
-    links:
-      - "elasticsearch"
+    depends_on:
+      - elasticsearch
     ports:
       - "24224:24224"
       - "24224:24224/udp"
@@ -65,7 +65,7 @@ services:
     mem_limit: 500m
 
     depends_on:
-      - es
+      - elasticsearch
     environment:
       SERVER_NAME: $PROJECT_NAME
       ELASTICSEARCH_HOSTS: http://elasticsearch:9200
