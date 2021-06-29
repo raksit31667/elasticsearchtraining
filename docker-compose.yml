@@ -7,7 +7,7 @@ services:
       - node.name=es
       - cluster.name=es-cluster
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - discovery.type=single-node
       - action.auto_create_index=true
       - network.host=0.0.0.0
@@ -33,6 +33,9 @@ services:
       memlock:
         soft: -1
         hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
     cpus: 2
     mem_limit: 2g
 
