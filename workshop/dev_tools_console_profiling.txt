@@ -21,7 +21,7 @@ GET /demo_suggestion/_search
 # Goto /app/dev_tools#/searchprofiler
 GET /demo_suggestion/_search
 {
-  "profiling": true,
+  "profile": true,
   "query": {
     "bool": {
       "should": [
